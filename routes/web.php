@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('add-content', 'AdminController@index')->name('add-content');
+    Route::post('add-content', 'AdminController@getData')->name('add-content');
 });
+

@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Philosopher:400,400i");
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+body {
+    background-color: #F0FFF0;
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 800;
+    color: #333; }
+
+a {
+    text-decoration: none;
+    color: #000; }
+a:hover {
+    text-decoration: none; }
+.content_wrap{
+    width: 90%;
+    margin:0 auto;
+}
+h1 {
+    display: block;
+    font-weight: 800;
+    font-size: 30px;
+    /*text-transform: uppercase;*/
+    overflow: hidden;
+    text-align: center;
+}
+.panel-body hr{
+    margin: 15px 0;
+}
+.theme{
+    font-size:17px;
+}
+.text {
+    font-weight: 500;
+    font-size: 15px;
+}
+.amount{
+    font-size: 18px;
+    margin: 20px 10px 20px 0;
+    text-align: right;
+}
+.add{
+    font-size:18px;
+}
+.messages{
+    width: 90%;
+    margin:0 auto;
+}
+.edit, .delete {
+    font-size: 14px;
+}
+.edit{
+    margin-right: 4px;
+}
+.form_wrap{
+    padding: 0px 150px;
+    width: 80%;
+    margin: 0 auto 60px;
+}
+.form_wrap span{
+    display: inline-block;
+    width: 36%;
+    float: left;
+    padding-top: 3px;
+    font-size: 18px;
+}
+input, select, textarea{
+    width: 64%;
+    padding: 2px 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px #888a85 solid;
+    border-radius: 5px;
+    font-weight: 500;
+
+    /*margin-left: -50px;*/
+}
+select{
+    width:auto;
+}
+textarea{
+    height: 200px;
+}
+input::-webkit-input-placeholder {
+    font-size: 18px;
+}
+textarea::-webkit-input-placeholder {
+    font-size: 14px;
+}
+input::-moz-placeholder{
+    font-size: 14px;
+
+}/* Firefox 19+ */
+textarea::-moz-placeholder{
+    font-size: 16px;
+}
+.form_wrap button{
+    font-size: 16px;
+}
