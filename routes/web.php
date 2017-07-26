@@ -17,3 +17,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('add-content', 'AdminController@getData')->name('add-content');
 });
 
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
