@@ -19,4 +19,11 @@ class HomeController extends Controller
             'count'=>$count
         ]);
     }
+    public function delete(Request $request){
+        $currentId = $request->id;
+        $message= Message::find($currentId);
+        if($message->delete()){
+            return redirect()->route('home')->with(['status'=>'Запись удалена']);
+        };
+    }
 }

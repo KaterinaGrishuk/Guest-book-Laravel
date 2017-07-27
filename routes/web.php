@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::delete('/', 'HomeController@delete')->name('home');
 Route::group(['prefix' => 'admin'], function() {
     Route::get('add-content', 'AddMessageController@index')->name('add-content');
     Route::post('add-content', 'AddMessageController@getData')->name('add-content');

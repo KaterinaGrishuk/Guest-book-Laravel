@@ -27,7 +27,7 @@ class AddMessageController extends Controller
         $lastValue = DB::table('messages')->max('number');
         $data['number']=(int)$lastValue + 1;
         $message = new Message();
-        $message->fill($data);
+        $message->fill($data)->save();
         return redirect('admin/add-content')->with(['status'=>'Запись успешно добавлена']);
     }
 }
