@@ -7,7 +7,7 @@ use Validator;
 use DB;
 use App\Message;
 
-class AdminController extends Controller
+class AddMessageController extends Controller
 {
     public function index(){
         return view('admin.add-content')->with(['title' => 'Гостевая книга: добавление записи']);

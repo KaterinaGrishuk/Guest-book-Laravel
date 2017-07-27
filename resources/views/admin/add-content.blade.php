@@ -3,17 +3,12 @@
     <div class="add_content">
     <h1>{{$title}}</h1>
     <hr>
-    @if(session('status'))
-        <div class="alert alert-success">{{ session('status') }}</div><br>
-    @endif
+        @if(session('status'))
+            <div class="alert alert-success">{{ session('status') }} <i style="font-size: 16px; margin: 0 6px;" class="fa fa-caret-right" aria-hidden="true"></i>
+                <a style="font-size: 19px; color: #2b542c;" href="{{route('home')}}">на главную</a>
+            </div>
+        @endif
 
-    {{--@if($errors->any())--}}
-        {{--<ul class="alert alert-danger">--}}
-            {{--@foreach($errors->all() as $error)--}}
-                {{--<li>{{$error}}</li>--}}
-            {{--@endforeach--}}
-        {{--</ul>--}}
-    {{--@endif--}}
     <div class="form_wrap">
 
         {{ Form::open(['files' => true]) }}
@@ -35,6 +30,7 @@
         @endif
         <button type="submit" class="add pull-right btn btn-success">Добавить</button>
         {{ Form::close() }}
+        <a href="{{route('home')}}"><button style="margin-right: 5px;" type="button" class="add pull-right btn btn-danger">Отмена</button></a>
 
     </div>
     </div>

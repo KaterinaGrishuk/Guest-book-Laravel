@@ -22,7 +22,8 @@
                     <div class="text">{{$message->text}}</div>
                     <div class="pull-right">
                         <button type="button" class="delete pull-right btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        <button type="button" class="edit pull-right btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <a href="{{route('edit-content',['id'=>$message->id])}}"><button type="button" class="edit pull-right btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -13,8 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('add-content', 'AdminController@index')->name('add-content');
-    Route::post('add-content', 'AdminController@getData')->name('add-content');
+    Route::get('add-content', 'AddMessageController@index')->name('add-content');
+    Route::post('add-content', 'AddMessageController@getData')->name('add-content');
+    Route::get('edit/message/{id}','EditMessageController@index')->name('edit-content');
+    Route::post('edit/message/{id}','EditMessageController@updateData')->name('edit-content');
 });
 
 
