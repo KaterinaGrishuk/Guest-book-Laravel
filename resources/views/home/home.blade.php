@@ -15,7 +15,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <span>Пользователь: {{$message->name}}</span>
+                        <span>Пользователь: {{$message->user->name}}</span>
                         <span class="pull-right time">{{$message->created_at}}</span>
                     </div>
                 </div>

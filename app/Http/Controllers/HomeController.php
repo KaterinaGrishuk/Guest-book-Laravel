@@ -3,27 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Message;
 
 class HomeController extends Controller
 {
-
-    public function index(){
-        $messages = Message::latest()->paginate(3);
-//        dd($messages);
-        $count = Message::count();
-
-        return view('home.home')->with([
-            'title'=>"Гостевая книга",
-            'messages'=>$messages,
-            'count'=>$count
-        ]);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
-    public function delete(Request $request){
-        $currentId = $request->id;
-        $message= Message::find($currentId);
-        if($message->delete()){
-            return redirect()->route('home')->with(['status'=>'Запись удалена']);
-        };
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

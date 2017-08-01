@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnNumMessageTable extends Migration
+class UpdateUserIdColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddColumnNumMessageTable extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->integer('number')->unsigned()->after('id');
+            $table->integer('user_id')->unsigned()->default(1)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnNumMessageTable extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('number');
+            //
         });
     }
 }

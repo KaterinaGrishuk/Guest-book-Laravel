@@ -17,9 +17,8 @@ class EditMessageController extends Controller
     public function updateData(Request $request, $id){
         $message = Message::find($id);
         $newData= $request->except('_token');
+//        dd($newData);
         $validator = Validator::make($newData,[
-            'name' => 'required|max:100',
-            'email' => 'required|email',
             'theme' => 'required|min:3|max:150',
             'text' => 'required|min:3'
         ]);

@@ -14,9 +14,8 @@ class AddMessageController extends Controller
     }
     public function getData(Request $request){
         $data=$request->except(['_token']);
+
         $validator = Validator::make($data, [
-            'name' => 'required|max:100',
-            'email' => 'required|email',
             'theme' => 'required|min:3|max:150',
             'text' => 'required|min:3'
         ]);
@@ -24,6 +23,7 @@ class AddMessageController extends Controller
 //            dd($validator);
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
         $lastValue = DB::table('messages')->max('number');
         $data['number']=(int)$lastValue + 1;
         $message = new Message();
