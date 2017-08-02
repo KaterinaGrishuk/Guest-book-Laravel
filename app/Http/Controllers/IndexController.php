@@ -25,7 +25,10 @@ class IndexController extends Controller
     public function delete(Request $request){
         $currentId = $request->id;
         $message= Message::find($currentId);
-        if(Gate::denies('delete-content')){
+//        if(Gate::denies('delete-content')){
+//            return redirect()->back()->with(['status'=>'У вас нет прав на удаление записи']);
+//        }
+        if($request->user()->cannot('delete', $message)){
             return redirect()->back()->with(['status'=>'У вас нет прав на удаление записи']);
         }
         if($message->delete()){

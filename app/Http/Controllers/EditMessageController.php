@@ -14,14 +14,19 @@ class EditMessageController extends Controller
         $message = Message::find($id);
         $oldData = $message->toArray();
         $user = Auth::user();
-        return view('admin.edit-content')->with(['title' => "Гостевая книга: редактирование записи",'oldData' => $oldData,
-            'user'=>$user]);
+        return view('admin.edit-content')->with(['title' => "Гостевая книга: редактирование записи",
+                                                        'message'=>$message,
+                                                        'oldData' => $oldData,
+                                                        'user'=>$user]);
     }
     public function updateData(Request $request, $id){
         $message = Message::find($id);
         $user = Auth::user();
-        if(Gate::denies('edit-content', $message)){
-            return redirect()->back()->with(['status'=>'У вас нет прав']);
+//        if(Gate::denies('edit-content', $message)){
+//            return redirect()->back()->with(['status'=>'У вас нет прав']);
+//        }
+        if($user->cannot('edit',$message)){
+            return redirect()->back()->with(['noAccess'=>'У вас нет прав на редактирование данной записи']);
         }
 
         $newData= $request->except('_token');

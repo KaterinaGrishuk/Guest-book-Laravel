@@ -9,6 +9,9 @@
             @if(session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
+            @if(session('noAccess'))
+                <div class="alert alert-danger">{{ session('noAccess') }}</div>
+            @endif
             @foreach($messages as $message)
         <div class="messages">
             <div class="panel panel-info">
@@ -22,18 +25,22 @@
                     <div class="theme">Тема: {{$message->theme}}</div>
                     <hr>
                     <div class="text">{{$message->text}}</div>
-                    <div class="pull-right">
-                        <div class="butt">
-                            <a href="{{route('edit-content',['id'=>$message->id])}}"><button type="button" class="edit pull-right btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
-                        </div>
-                        <div class="butt">
-                        {{Form::open()}}
-                            {{ method_field('DELETE') }}
-                            {{Form::hidden('id', $message->id)}}
-                            <button type="submit" class="delete pull-right btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        {{ Form::close() }}
-                        </div>
-                    </div>
+                        @unless(Auth::guest())
+                            <div class="pull-right">
+                                <div class="butt">
+                                    <a href="{{route('edit-content',['id'=>$message->id])}}"><button type="button" class="edit pull-right btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+                                </div>
+                            @if(Auth::user()->can('delete',$message))
+                                <div class="butt">
+                                    {{Form::open()}}
+                                    {{ method_field('DELETE') }}
+                                    {{Form::hidden('id', $message->id)}}
+                                    <button type="submit" class="delete pull-right btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    {{ Form::close() }}
+                                </div>
+                            @endif
+                            </div>
+                        @endunless
                 </div>
             </div>
         </div>

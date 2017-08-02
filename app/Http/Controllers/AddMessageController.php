@@ -17,7 +17,11 @@ class AddMessageController extends Controller
                                                         'user'=>$user]);
     }
     public function getData(Request $request){
-        if(Gate::denies('add-content')){
+//        if(Gate::denies('add-content')){
+//            return redirect()->back()->with(['status'=>'У вас нет прав']);
+//        }
+        $message = new Message();
+        if($request->user()->cannot('add',$message)){
             return redirect()->back()->with(['status'=>'У вас нет прав']);
         }
         $user = Auth::user();

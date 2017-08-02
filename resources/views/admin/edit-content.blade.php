@@ -6,6 +6,14 @@
             <a style="font-size: 19px; color: #2b542c;" href="{{route('index-home')}}">на главную</a>
             </div>
         @endif
+            @if(session('noAccess'))
+                <div class="alert alert-danger">{{ session('noAccess') }} <i style="font-size: 16px; margin: 0 6px;" class="fa fa-caret-right" aria-hidden="true"></i>
+                    <a style="font-size: 19px; color: #2b542c;" href="{{route('index-home')}}">на главную</a>
+                </div>
+            @endif
+            @if(Auth::user()->cannot('edit', $message))
+                <div class="alert alert-danger">У вас нет прав на редактирование данной записи</div>
+            @endif
 
         <div class="form_wrap">
 
@@ -18,7 +26,10 @@
             @if($errors->has('text'))
                 <span class="alert alert-danger">{{ $errors->first('text') }}</span><br>
             @endif
-            <button type="submit" class="add pull-right btn btn-success">Редактировать</button>
+            @if(Auth::user()->can('edit', $message))
+                <button type="submit" class="add pull-right btn btn-success">Редактировать</button>
+            @endif
+
             {{ Form::close() }}
 
             <a href="{{route('index-home')}}"><button style="margin-right: 5px;" type="button" class="add pull-right btn btn-danger">Отмена</button></a>
