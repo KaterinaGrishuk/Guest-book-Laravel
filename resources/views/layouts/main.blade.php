@@ -15,7 +15,23 @@
 @if(Auth::guest())
     <div class="auth"><a href="{{route('login')}}">Войти</a></div>
 @else
-    <div class="auth"><a href="">Вы зашли как - {{$user->name}}</a></div>
+    <div class="auth">
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu" role="menu">
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();"> Выйти
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+            </div>
+        </div>
+    </div>
 @endif
 
 @yield('content')
