@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <h1>{{$title}}</h1>
-    <hr>
+
     <div class="container">
         <div class="content_wrap">
             <a href="{{route('add-content')}}"><button type="button" class="add btn btn-success">Добавить запись   <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

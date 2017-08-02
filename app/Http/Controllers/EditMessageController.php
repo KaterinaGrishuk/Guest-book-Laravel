@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
+use Gate;
 
 class EditMessageController extends Controller
 {
     public function index($id){
         $message = Message::find($id);
         $oldData = $message->toArray();
-//        dd($oldData);
-        return view('admin.edit-content')->with(['title' => "Гостевая книга: редактирование записи",'oldData' => $oldData]);
+        $user = Auth::user();
+        return view('admin.edit-content')->with(['title' => "Гостевая книга: редактирование записи",'oldData' => $oldData,
+            'user'=>$user]);
     }
     public function updateData(Request $request, $id){
         $message = Message::find($id);
+        $user = Auth::user();
+        if(Gate::denies('edit-content', $message)){
+            return redirect()->back()->with(['status'=>'У вас нет прав']);
+        }
+
         $newData= $request->except('_token');
-//        dd($newData);
         $validator = Validator::make($newData,[
             'theme' => 'required|min:3|max:150',
             'text' => 'required|min:3'

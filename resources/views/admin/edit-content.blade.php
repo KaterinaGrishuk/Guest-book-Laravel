@@ -1,11 +1,9 @@
 @extends('layouts.main')
 @section('content')
     <div class="add_content">
-    <h1>{{$title}}</h1>
-        <hr>
         @if(session('status'))
             <div class="alert alert-success">{{ session('status') }} <i style="font-size: 16px; margin: 0 6px;" class="fa fa-caret-right" aria-hidden="true"></i>
-            <a style="font-size: 19px; color: #2b542c;" href="{{route('home')}}">на главную</a>
+            <a style="font-size: 19px; color: #2b542c;" href="{{route('index-home')}}">на главную</a>
             </div>
         @endif
 

@@ -106,13 +106,24 @@ span.alert {
     padding: 2px 10px;
     margin: -4px 0 10px 30% !important
 }
-
 div.alert {
     font-size: 19px;
     text-align: center;
     padding: 10px 0px;
-
 }
 .butt{
     display: inline-block;
+}
+.auth{
+    border: 1px #888a85 solid;
+    padding: 7px 27px;
+    position: absolute;
+    top: 17px;
+    right: 100px;
+    border-radius: 8px;
+    background-color: #c7ddef;
+}
+.auth a{
+    font-size: 16px;
+    color: #5e5e5e;
 }

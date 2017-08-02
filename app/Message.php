@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Message extends Model
 {
-    protected $fillable = ['name', 'email', 'theme', 'text','number'];
+    protected $fillable = ['name', 'email', 'theme', 'text','number', 'user_id'];
     public function user(){
         return $this->belongsTo('App\User');
     }
