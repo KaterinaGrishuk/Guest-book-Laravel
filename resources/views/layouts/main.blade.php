@@ -13,7 +13,8 @@
 <h1>{{$title}}</h1>
 <hr>
 @if(Auth::guest())
-    <div class="auth"><a href="{{route('login')}}">Войти</a></div>
+    <div class="auth1"><a href="{{route('login')}}">Войти</a></div>
+    <div class="auth2"><a href="{{route('register')}}">Регистрация</a></div>
 @else
     <div class="auth">
         <div class="dropdown">

@@ -28,6 +28,11 @@ class MessagePolicy
         return false;
     }
     public function edit(User $user, Message $message){
+        foreach ($user->roles as $role){
+            if($role->name == 'admin'){
+                return true;
+            }
+        }
         if($user->id == $message->user_id){
             return true;
         }
